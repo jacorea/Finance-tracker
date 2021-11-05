@@ -8,27 +8,33 @@ const ExpenseItemList = ({ expenses}) => {
 
     const [ selectedYear, setSelectedYear ] =useState('2022')
 
-    let expensesList = expenses.map((expense)=>{
+    let filteredExpenses = expenses.filter((expense) => expense.date.getFullYear() === Number(selectedYear)) //filteres expenses based on selected year
+    let filteredExpensesList = filteredExpenses.map((filteredExpense)=> { // list filtered expenses
         return (
             <ExpenseItem 
-                key={expense.id}
-                title={expense.title} 
-                amount={expense.amount} 
-                date={expense.date} 
+                key={filteredExpense.id}
+                title={filteredExpense.title} 
+                amount={filteredExpense.amount} 
+                date={filteredExpense.date} 
             />
         )
-    }) 
+    })
 
     const selectYearHandler = (yearPicked) => {
         setSelectedYear(yearPicked);
-        console.log(yearPicked)
+    }
+
+    let expensesDisplay = <p>No expenses to display.</p>;
+
+    if (filteredExpenses.length > 0 ) {
+        expensesDisplay = filteredExpensesList
     }
 
     return (
         <div>
             <Card className="expenses">
             <ExpenseFilter selectedYear={selectedYear} onSelectYear={selectYearHandler}  />
-                {expensesList}
+                {expensesDisplay}
             </Card>
         </div>
     )
