@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import logo from './logo.svg';
 import './App.css';
 import EXPENSES_DATA from './data/utils/expenses';
-import ExpenseItemList from './components/Expenses/ExpenseItemList/ExpenseItemList';
 import NewExpense from './components/NewExpense/NewExpense/NewExpense';
+import Expenses from './components/Expenses/Expenses/Expenses';
 
 function App() {
   const [expenses, setExpenses] = useState(EXPENSES_DATA);
@@ -19,7 +18,7 @@ function App() {
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler}  />
-      <ExpenseItemList expenses={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }
