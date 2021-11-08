@@ -18,13 +18,15 @@ const NewExpense = (props) => {
         setIsFormEditing(!isFormEditing)
     }
 
-    const onToggleFormHandler = (e) => {
+    const onToggleFormHandler = () => {
         setIsFormEditing(!isFormEditing)
     }
     
     return (
         <div className="new-expense">
-            {isFormEditing ? <ExpenseForm onCancel={onToggleFormHandler} onSaveExpenseData={saveExpenseDataHandler}/> : <button onClick={onToggleFormHandler}>Add New Expense</button>}
+            { isFormEditing ? <ExpenseForm onCancel={onToggleFormHandler} onSaveExpenseData={saveExpenseDataHandler}/> 
+            : <button onClick={onToggleFormHandler}>Add New Expense</button>
+            }
         </div>
     )
 }
