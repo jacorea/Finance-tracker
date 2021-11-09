@@ -4,6 +4,7 @@ import EXPENSES_DATA from './data/utils/expenses';
 import NewExpense from './components/NewExpense/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses/Expenses';
 
+
 function App() {
   const [expenses, setExpenses] = useState(EXPENSES_DATA);
   
@@ -17,6 +18,7 @@ function App() {
   
   return (
     <div>
+      <h1 style={{textAlign: 'center'}}>Finance Tracker</h1>
       <NewExpense onAddExpense={addExpenseHandler}  />
       <Expenses expenses={expenses} />
     </div>
